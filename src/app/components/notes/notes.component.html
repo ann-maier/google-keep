@@ -1,0 +1,44 @@
+<main class="container mt-3">
+  <input
+    type="search"
+    class="form-control mb-3"
+    placeholder="Search notes..."
+    [(ngModel)]="searchText"
+  />
+  <article class="card" *ngFor="let note of notes | search: searchText">
+    <div class="card-body">
+      <h5 class="card-title">{{ note.title }}</h5>
+      <p class="card-text" [ngClass]="{ 'line-through': note.done }">
+        {{ note.text }}
+      </p>
+      <a routerLink="/note/{{ note.id }}">
+        <button class="btn btn-primary">
+          EDIT
+        </button>
+      </a>
+      <button class="btn" (click)="removeNote(note.id)">REMOVE</button>
+      <button class="btn" (click)="toggleNote(note.id, note.done)">
+        MARK AS DONE
+      </button>
+      <button class="btn" (click)="archiveNote(note.id)">ARCHIVE</button>
+    </div>
+  </article>
+  <section class="mt-5">
+    <input type="text" class="form-control" #title placeholder="Enter title" />
+    <div class="input-group">
+      <textarea
+        class="form-control"
+        #note
+        placeholder="Enter your note"
+      ></textarea>
+      <div class="input-group-append">
+        <button
+          class="btn btn-primary"
+          (click)="addNote(title.value, note.value)"
+        >
+          Add a note
+        </button>
+      </div>
+    </div>
+  </section>
+</main>

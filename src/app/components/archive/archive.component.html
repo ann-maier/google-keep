@@ -1,0 +1,13 @@
+<main class="container mt-3">
+  <article class="card" *ngFor="let note of notes">
+    <div class="card-body">
+      <h5 class="card-title">{{ note.title }}</h5>
+      <p class="card-text" [ngClass]="{ 'line-through': note.done }">
+        {{ note.text }}
+      </p>
+      <button class="btn btn-primary" (click)="removeNoteFromArchive(note.id)">
+        REMOVE FROM ARCHIVE
+      </button>
+    </div>
+  </article>
+</main>
