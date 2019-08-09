@@ -1,0 +1,7 @@
+<div class="card" *ngIf="note">
+  <div class="card-body">
+    <input type="text" class="form-control" [(ngModel)]="note.title" />
+    <input type="text" class="form-control" [(ngModel)]="note.text" />
+    <button class="btn btn-primary" (click)="saveNote()">SAVE NOTE</button>
+  </div>
+</div>
